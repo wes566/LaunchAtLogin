@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 	s.name = 'LaunchAtLogin'
-	s.version = '2.5.0'
+	s.version = '2.6.0'
 	s.summary = 'Add "Launch at Login" functionality to your sandboxed macOS app in seconds'
 	s.license = 'MIT'
 	s.homepage = 'https://github.com/sindresorhus/LaunchAtLogin'
@@ -10,13 +10,15 @@ Pod::Spec.new do |s|
 	s.swift_version = '4.2'
 	s.platform = :macos, '10.12'
 
-	spec.subspec 'Framework' do |fw|
+	s.default_subspec = 'Framework'
+
+	s.subspec 'Framework' do |fw|
 		fw.source_files = 'LaunchAtLogin'
 		fw.resource = 'LaunchAtLogin/copy-helper.sh'
 		fw.dependency 'LaunchAtLogin/Helper'
 	end
 
-	spec.subspec 'Helper' do |h|
+	s.subspec 'Helper' do |h|
 		h.source_files = 'LaunchAtLoginHelper'
 	end
 end
