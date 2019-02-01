@@ -7,8 +7,16 @@ Pod::Spec.new do |s|
 	s.social_media_url = 'https://twitter.com/sindresorhus'
 	s.authors = { 'Sindre Sorhus' => 'sindresorhus@gmail.com' }
 	s.source = { :git => 'https://github.com/sindresorhus/LaunchAtLogin.git', :tag => "v#{s.version}" }
-	s.source_files = 'LaunchAtLogin', 'LaunchAtLoginHelper'
-	s.resource = 'LaunchAtLogin/copy-helper.sh'
 	s.swift_version = '4.2'
 	s.platform = :macos, '10.12'
+
+	spec.subspec 'Framework' do |fw|
+		fw.source_files = 'LaunchAtLogin'
+		fw.resource = 'LaunchAtLogin/copy-helper.sh'
+		fw.dependency 'LaunchAtLogin/Helper'
+	end
+
+	spec.subspec 'Helper' do |h|
+		h.source_files = 'LaunchAtLoginHelper'
+	end
 end
